@@ -1,0 +1,58 @@
+body {
+  --bg-color-default: #242424;
+  --color-blue: #0b73f4;
+  --color-orange: #ff7f55;
+
+  --bg-color-card: #2e2e2e;
+  --border-color-button-dark: #646cff;
+  --bg-color-button-dark: #1a1a1a;
+  --color-button-dark: #fff;
+  --border-color-button-light: #000447;
+  --bg-color-button-light: #ededed;
+  --color-button-light: #000;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #131313;
+  margin: 0;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  text-align: center;
+  font-size: larger;
+
+  @media screen and (max-width: 1280px) {
+    font-size: medium;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: small;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    --bg-color-default: #f1f1f1;
+    --color-blue: #37c0f7;
+    --color-orange: #fb9e44;
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
