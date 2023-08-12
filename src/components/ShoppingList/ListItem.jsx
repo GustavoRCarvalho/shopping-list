@@ -1,4 +1,4 @@
-import { Reorder, useDragControls } from "framer-motion"
+import { Reorder, useDragControls, useMotionValue } from "framer-motion"
 import { AiOutlineDelete } from "react-icons/ai"
 import { GoGrabber } from "react-icons/go"
 import { styled } from "styled-components"
@@ -8,7 +8,8 @@ import { AddSparkCheck } from "../animations/SparkCheck"
 import { AddSparkDelete } from "../animations/SparkDelete"
 
 export const ListItem = ({ item, list, setList }) => {
-  const controls = useDragControls()
+  const y = useMotionValue(0)
+  const dragControls = useDragControls()
 
   function handleEditInputCard({ text, id }) {
     let newList = list.map((item) => {
@@ -43,8 +44,9 @@ export const ListItem = ({ item, list, setList }) => {
     <Item
       id={item.id}
       value={item}
+      style={{ y }}
       dragListener={false}
-      dragControls={controls}
+      dragControls={dragControls}
     >
       {item.label !== "" && (
         <CheckInput
@@ -73,7 +75,7 @@ export const ListItem = ({ item, list, setList }) => {
             onClick={(e) => handleDeleteCard({ event: e, id: item.id })}
           />
         </ListButton>
-        <GrabberIcon onPointerDown={(e) => controls.start(e)} />
+        <GrabberIcon onPointerDown={(event) => dragControls.start(event)} />
       </ActionsWrapper>
     </Item>
   )
