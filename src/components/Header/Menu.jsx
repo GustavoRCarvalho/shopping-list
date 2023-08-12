@@ -10,6 +10,9 @@ export const Menu = () => {
       <NoStyleLinkRouter to={"/lista2"}>
         <MenuItem>LISTA2</MenuItem>
       </NoStyleLinkRouter>
+      <NoStyleLinkRouter to={"/lista3"}>
+        <MenuItem>LISTA3</MenuItem>
+      </NoStyleLinkRouter>
     </MenuList>
   )
 }

@@ -1,4 +1,4 @@
-import { Reorder, useDragControls, useMotionValue } from "framer-motion"
+import { Reorder, useDragControls } from "framer-motion"
 import { AiOutlineDelete } from "react-icons/ai"
 import { GoGrabber } from "react-icons/go"
 import { styled } from "styled-components"
@@ -8,7 +8,6 @@ import { AddSparkCheck } from "../animations/SparkCheck"
 import { AddSparkDelete } from "../animations/SparkDelete"
 
 export const ListItem = ({ item, list, setList }) => {
-  const y = useMotionValue(0)
   const dragControls = useDragControls()
 
   function handleEditInputCard({ text, id }) {
@@ -44,7 +43,6 @@ export const ListItem = ({ item, list, setList }) => {
     <Item
       id={item.id}
       value={item}
-      style={{ y }}
       dragListener={false}
       dragControls={dragControls}
     >
@@ -80,6 +78,7 @@ export const ListItem = ({ item, list, setList }) => {
     </Item>
   )
 }
+
 const CheckInput = styled.input`
   background-color: #0000;
 
