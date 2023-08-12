@@ -68,7 +68,7 @@ export function SortableItem({ item, list, setList }) {
     setList(newList)
   }
 
-  function handleCheckCard({ event, value, id }) {
+  function handleCheckCard({ value, id }) {
     let newList = list.map((item) => {
       if (id === item.id) {
         return { ...item, isCheck: value }
@@ -76,7 +76,6 @@ export function SortableItem({ item, list, setList }) {
         return item
       }
     })
-    AddSparkCheck(event)
     setList(newList)
   }
   return (
@@ -86,9 +85,9 @@ export function SortableItem({ item, list, setList }) {
           <CheckInput
             type="checkbox"
             checked={item.isCheck}
+            onClick={(e) => AddSparkCheck(e)}
             onChange={(e) =>
               handleCheckCard({
-                event: e,
                 value: e.target.checked,
                 id: item.id,
               })
