@@ -1,9 +1,10 @@
 import { Reorder } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { styled } from "styled-components"
 import { AiOutlineDelete } from "react-icons/ai"
 import { GoGrabber } from "react-icons/go"
-import { AddSpark } from "../animations/Spark"
+import { BiAddToQueue } from "react-icons/bi"
+import { AddSparkPlus } from "../animations/SparkPlus"
 import { AddSparkDelete } from "../animations/SparkDelete"
 
 const listShopping = [
@@ -13,21 +14,29 @@ const listShopping = [
   { id: 3, label: "Azeite", isCheck: false },
 ]
 
-export const ShoppingList = () => {
+export const ShoppingList2 = () => {
   const [list, setList] = useState(listShopping)
-  const blockAddMore = list[0].label === ""
+  const [newItemLabel, setNewItemLabel] = useState("")
+  const blockAddMore = newItemLabel === ""
 
-  function handleAddNewCard() {
+  function addToList(e) {
     if (blockAddMore) {
       return
     }
     const newItem = {
       id: parseInt(Math.random() * 1000000),
-      label: "",
+      label: newItemLabel,
       isCheck: false,
     }
-
+    AddSparkPlus(e)
     setList((value) => [newItem, ...value])
+    setNewItemLabel("")
+  }
+
+  function handleTypeEnter(e) {
+    if (e.key === "Enter") {
+      addToList(e)
+    }
   }
 
   function handleEditInputCard({ text, id }) {
@@ -56,18 +65,24 @@ export const ShoppingList = () => {
     AddSparkDelete(event)
   }
 
-  useEffect(() => {}, [list])
-
   return (
     <>
-      <Button
-        onClick={(e) => {
-          AddSpark(e)
-          handleAddNewCard(e)
-        }}
-      >
-        + Adicionar
-      </Button>
+      <NewItemInput>
+        <ItemInput
+          placeholder="Insira um Item..."
+          onChange={(e) => setNewItemLabel(e.target.value)}
+          onKeyDown={handleTypeEnter}
+          value={newItemLabel}
+        />
+        <ListButton
+          id="addItemButton"
+          $clickColor={"var(--color-orange)"}
+          onClick={addToList}
+          disabled={blockAddMore}
+        >
+          <AddIcon />
+        </ListButton>
+      </NewItemInput>
       <List axis="y" values={list} onReorder={setList}>
         {list.map((item) => {
           return (
@@ -82,24 +97,21 @@ export const ShoppingList = () => {
                 />
               )}
               <ItemInput
-                placeholder="Insira um Item..."
+                $isChecked={item.isCheck}
+                placeholder="Parece que está faltando algo..."
                 onChange={(e) =>
                   handleEditInputCard({ text: e.target.value, id: item.id })
                 }
                 value={item.label}
               />
-              {item.label !== "" && (
-                <ActionsWrapper>
-                  <ListButton>
-                    <DeleteIcon
-                      onClick={(e) =>
-                        handleDeleteCard({ event: e, id: item.id })
-                      }
-                    />
-                  </ListButton>
-                  <GrabberIcon />
-                </ActionsWrapper>
-              )}
+              <ActionsWrapper>
+                <ListButton $clickColor="#ff0e0e">
+                  <DeleteIcon
+                    onClick={(e) => handleDeleteCard({ event: e, id: item.id })}
+                  />
+                </ListButton>
+                <GrabberIcon />
+              </ActionsWrapper>
             </ListItem>
           )
         })}
@@ -115,6 +127,10 @@ const CheckInput = styled.input`
   margin-inline: 0.3em;
   width: 2em;
   height: 2em;
+
+  &:checked {
+    accent-color: var(--color-blue);
+  }
 `
 
 const DeleteIcon = styled(AiOutlineDelete)`
@@ -122,6 +138,10 @@ const DeleteIcon = styled(AiOutlineDelete)`
   height: 1.6em;
 `
 const GrabberIcon = styled(GoGrabber)`
+  width: 1.6em;
+  height: 1.6em;
+`
+const AddIcon = styled(BiAddToQueue)`
   width: 1.6em;
   height: 1.6em;
 `
@@ -140,10 +160,10 @@ const ListButton = styled.button`
   padding-inline: 0.2em;
 
   border: none;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
 
   &:active {
-    background-color: #ff0e0e;
+    background-color: ${(props) => !props.disabled && props.$clickColor};
   }
 `
 
@@ -151,15 +171,35 @@ const ActionsWrapper = styled.div`
   display: flex;
 `
 
+const NewItemInput = styled.div`
+  background-color: var(--bg-color-card);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-inline: 0.6em;
+  padding-block: 0.2em;
+
+  margin-block: 0.6em;
+  margin-inline: 1em;
+
+  border-radius: 0.3em;
+
+  text-align: start;
+`
 const ItemInput = styled.input`
   background-color: #0000;
   outline: none;
   border: none;
   font-family: var(--li-font-family);
   font-size: var(--li-font-size);
+
+  text-decoration: ${(props) => props.$isChecked && "line-through"};
+
   width: 100%;
 
-  margin-top: 0.1em;
+  margin-top: 0.4em;
 `
 
 const ListItem = styled(Reorder.Item)`
@@ -170,7 +210,7 @@ const ListItem = styled(Reorder.Item)`
   justify-content: space-between;
 
   padding-inline: 0.6em;
-  padding-block: 0.3em;
+  padding-block: 0.2em;
 
   margin-bottom: 0.6em;
   margin-inline: 1em;
@@ -188,21 +228,4 @@ const List = styled(Reorder.Group)`
 
   padding: 0;
   margin: 0;
-`
-const Button = styled.button`
-  font-family: var(--li-font-family);
-  font-size: var(--li-font-size);
-  background-color: var(--color-orange);
-  width: calc(100% - 2em);
-
-  border: none;
-  border-radius: 0.5em;
-
-  padding-block: 0.5em;
-  padding-inline: 1em;
-
-  margin-bottom: 0.6em;
-  margin-inline: 1em;
-
-  cursor: pointer;
 `

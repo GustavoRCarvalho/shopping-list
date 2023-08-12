@@ -2,17 +2,11 @@ body {
   --bg-color-default: #242424;
   --color-blue: #0b73f4;
   --color-orange: #ff7f55;
-
-  --li-font-family: "Indie Flower", cursive;
-  --li-font-size: 1.2em;
+  --li-font-family: "Solitreo", cursive;
+  --li-font-size: 1.3em;
+  --color: rgba(255, 255, 255, 0.87);
 
   --bg-color-card: #2e2e2e;
-  --border-color-button-dark: #646cff;
-  --bg-color-button-dark: #1a1a1a;
-  --color-button-dark: #fff;
-  --border-color-button-light: #000447;
-  --bg-color-button-light: #ededed;
-  --color-button-light: #000;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -28,15 +22,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 
   text-align: center;
   font-size: larger;
 
   @media screen and (max-width: 1280px) {
-    font-size: medium;
+    font-size: large;
   }
   @media screen and (max-width: 768px) {
-    font-size: small;
+    font-size: medium;
   }
 }
 
@@ -45,6 +40,7 @@ body {
     --bg-color-default: #f1f1f1;
     --color-blue: #37c0f7;
     --color-orange: #fb9e44;
+    --color: #213547;
     color: #213547;
     background-color: #ffffff;
   }
