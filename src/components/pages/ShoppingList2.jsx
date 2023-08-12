@@ -89,7 +89,7 @@ export const ShoppingList2 = () => {
       <List axis="y" values={list} onReorder={setList}>
         {list.map((item) => {
           return (
-            <ListItem key={item.id} id={item.id} value={item}>
+            <ListItem key={item.id} id={item.id} value={item} drag={false}>
               {item.label !== "" && (
                 <CheckInput
                   type="checkbox"
@@ -132,8 +132,8 @@ const CheckInput = styled.input`
 
   margin: 0;
   margin-inline: 0.3em;
-  width: 2em;
-  height: 2em;
+  width: 4em;
+  height: 4em;
 
   cursor: pointer;
 
@@ -143,16 +143,18 @@ const CheckInput = styled.input`
 `
 
 const DeleteIcon = styled(AiOutlineDelete)`
-  width: 1.6em;
-  height: 1.6em;
+  width: 3em;
+  height: 3em;
 `
 const GrabberIcon = styled(GoGrabber)`
-  width: 1.6em;
-  height: 1.6em;
+  width: 3em;
+  height: 3em;
+
+  cursor: grab;
 `
 const AddIcon = styled(BiAddToQueue)`
-  width: 1.6em;
-  height: 1.6em;
+  width: 3em;
+  height: 3em;
 `
 
 const ListButton = styled.button`
@@ -228,8 +230,6 @@ const ListItem = styled(Reorder.Item)`
   border-radius: 0.3em;
 
   text-align: start;
-
-  cursor: grab;
 `
 
 const List = styled(Reorder.Group)`
