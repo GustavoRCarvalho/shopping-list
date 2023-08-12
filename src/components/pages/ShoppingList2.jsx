@@ -6,6 +6,7 @@ import { GoGrabber } from "react-icons/go"
 import { BiAddToQueue } from "react-icons/bi"
 import { AddSparkPlus } from "../animations/SparkPlus"
 import { AddSparkDelete } from "../animations/SparkDelete"
+import { AddSparkCheck } from "../animations/SparkCheck"
 
 const listShopping = [
   { id: 0, label: "Pão", isCheck: false },
@@ -49,7 +50,7 @@ export const ShoppingList2 = () => {
     })
     setList(newList)
   }
-  function handleCheckCard({ value, id }) {
+  function handleCheckCard({ event, value, id }) {
     let newList = list.map((item) => {
       if (id === item.id) {
         return { ...item, isCheck: value }
@@ -57,8 +58,10 @@ export const ShoppingList2 = () => {
         return item
       }
     })
+    value && AddSparkCheck(event)
     setList(newList)
   }
+
   function handleDeleteCard({ event, id }) {
     let newList = list.filter(({ id: itemId }) => itemId !== id)
     setList(newList)
@@ -92,7 +95,11 @@ export const ShoppingList2 = () => {
                   type="checkbox"
                   checked={item.isCheck}
                   onChange={(e) =>
-                    handleCheckCard({ value: e.target.checked, id: item.id })
+                    handleCheckCard({
+                      event: e,
+                      value: e.target.checked,
+                      id: item.id,
+                    })
                   }
                 />
               )}
@@ -127,6 +134,8 @@ const CheckInput = styled.input`
   margin-inline: 0.3em;
   width: 2em;
   height: 2em;
+
+  cursor: pointer;
 
   &:checked {
     accent-color: var(--color-blue);
@@ -169,6 +178,7 @@ const ListButton = styled.button`
 
 const ActionsWrapper = styled.div`
   display: flex;
+  align-items: center;
 `
 
 const NewItemInput = styled.div`
