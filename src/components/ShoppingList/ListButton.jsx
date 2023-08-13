@@ -2,6 +2,7 @@ import { styled } from "styled-components"
 
 export const ListButton = styled.button`
   background-color: #0000;
+  transition: background-color 500ms;
 
   display: flex;
   align-items: center;
@@ -15,6 +16,10 @@ export const ListButton = styled.button`
 
   border: none;
   cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+
+  &:hover {
+    background-color: ${(props) => !props.disabled && props.$clickColor};
+  }
 
   &:active {
     background-color: ${(props) => !props.disabled && props.$clickColor};
