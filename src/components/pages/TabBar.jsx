@@ -14,13 +14,17 @@ export const TabBar = () => {
 const ContainerLimiteMenu = styled.div`
   display: flex;
   align-items: center;
-  max-width: 600px;
-  width: 95vw;
+  width: calc(100% - 1em);
 
-  padding-block: 1em;
+  padding-block: 0.5em;
+  @media screen and (min-width: 768px) {
+    width: 95%;
+    padding-block: 0.5em;
+  }
 `
+
 const ContainerHeader = styled.header`
-  background-color: var(--bg-color-default);
+  background-color: var(--bg-menu-color);
   position: sticky;
 
   display: flex;
@@ -30,5 +34,14 @@ const ContainerHeader = styled.header`
   width: 100%;
   bottom: 0;
 
+  border-top-right-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+
   z-index: 2;
+
+  @media screen and (min-width: 768px) {
+    max-width: 500px;
+    border-radius: 0.25em;
+    bottom: 0.5em;
+  }
 `

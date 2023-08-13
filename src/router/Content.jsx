@@ -20,7 +20,7 @@ export default function Content() {
 }
 
 const MainContainer = styled.main`
-  background-color: #242424;
+  background-color: var(--bg-color-default);
   max-width: 1280px;
   width: 95vw;
   min-height: 100vh;
