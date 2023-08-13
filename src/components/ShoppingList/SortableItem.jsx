@@ -17,6 +17,16 @@ const SortableItemContext = createContext({
   ref() {},
 })
 
+function DragHandle() {
+  const { attributes, listeners, ref } = useContext(SortableItemContext)
+
+  return (
+    <Grabber {...attributes} {...listeners} ref={ref}>
+      <GrabberIcon />
+    </Grabber>
+  )
+}
+
 export function SortableItem({ item, list, setList }) {
   const {
     attributes,
@@ -39,16 +49,6 @@ export function SortableItem({ item, list, setList }) {
     opacity: isDragging ? 0.4 : undefined,
     transform: CSS.Translate.toString(transform),
     transition,
-  }
-
-  function DragHandle() {
-    const { attributes, listeners, ref } = useContext(SortableItemContext)
-
-    return (
-      <Grabber {...attributes} {...listeners} ref={ref}>
-        <GrabberIcon />
-      </Grabber>
-    )
   }
 
   function handleDeleteCard({ event, id }) {
