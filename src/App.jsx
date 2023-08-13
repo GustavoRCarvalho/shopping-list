@@ -1,12 +1,12 @@
 import { BrowserRouter } from "react-router-dom"
 import Content from "./router/Content"
-import { Header } from "./components/pages/Header"
+import { TabBar } from "./components/pages/TabBar"
 
 export const App = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Content />
+      <TabBar />
     </BrowserRouter>
   )
 }

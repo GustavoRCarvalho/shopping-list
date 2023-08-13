@@ -25,13 +25,13 @@ body {
   overflow-x: hidden;
 
   text-align: center;
-  font-size: xx-large;
+  font-size: large;
 
   @media screen and (max-width: 1280px) {
-    font-size: x-large;
+    font-size: large;
   }
   @media screen and (max-width: 768px) {
-    font-size: larger;
+    font-size: x-large;
   }
 }
 

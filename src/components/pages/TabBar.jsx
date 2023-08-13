@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 import { Menu } from "../Header/Menu"
 
-export const Header = () => {
+export const TabBar = () => {
   return (
     <ContainerHeader>
       <ContainerLimiteMenu>
@@ -14,7 +14,7 @@ export const Header = () => {
 const ContainerLimiteMenu = styled.div`
   display: flex;
   align-items: center;
-  max-width: 1280px;
+  max-width: 600px;
   width: 95vw;
 
   padding-block: 1em;
@@ -28,7 +28,7 @@ const ContainerHeader = styled.header`
   align-items: center;
 
   width: 100%;
-  top: 0;
+  bottom: 0;
 
   z-index: 2;
 `
