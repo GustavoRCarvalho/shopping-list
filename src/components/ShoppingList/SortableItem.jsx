@@ -108,8 +108,8 @@ export function SortableItem({ item, list, setList }) {
               onClick={(e) => handleDeleteCard({ event: e, id: item.id })}
             />
           </ListButton>
+          <DragHandle />
         </ActionsWrapper>
-        <DragHandle />
       </Item>
     </SortableItemContext.Provider>
   )
@@ -147,7 +147,6 @@ const Grabber = styled.button`
   outline: none;
   appearance: none;
   background-color: transparent;
-  -webkit-tap-highlight-color: transparent;
 `
 const ActionsWrapper = styled.div`
   display: flex;

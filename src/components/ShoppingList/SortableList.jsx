@@ -37,7 +37,7 @@ export function SortableList({ list, setList }) {
       }}
     >
       <SortableContext items={list}>
-        <List role="application">
+        <List role="list">
           {list.map((item) => (
             <SortableItem
               key={item.id}
