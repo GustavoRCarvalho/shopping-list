@@ -1,4 +1,3 @@
-import { motion } from "framer-motion"
 import { styled } from "styled-components"
 
 export const SubMenuItem = ({ isSelected, children }) => {
@@ -10,12 +9,16 @@ export const SubMenuItem = ({ isSelected, children }) => {
         backgroundColor: isSelected ? "#fff" : "#0000",
       }}
     >
-      {children}
+      <ItemSpan>{children}</ItemSpan>
     </Item>
   )
 }
 
-const Item = styled(motion.li)`
+const ItemSpan = styled.span`
+  margin-top: 0.3em;
+`
+
+const Item = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;

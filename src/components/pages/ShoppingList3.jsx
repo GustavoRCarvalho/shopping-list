@@ -1,12 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { styled } from "styled-components"
 import { BiAddToQueue } from "react-icons/bi"
 import { AddSparkPlus } from "../animations/SparkPlus"
 import { ListButton } from "../ShoppingList/ListButton"
 import { ItemInput } from "../ShoppingList/ListItemInput"
 import { SortableList } from "../ShoppingList/SortableList"
+import { useLocation } from "react-router-dom"
+import { Loading } from "../common/Loading"
 
-const listShopping = [
+const listShopping = () => [
   { id: 1, label: "🍞 Pão", isCheck: false },
   { id: 2, label: "🧀 Queijo", isCheck: false },
   { id: 3, label: "🥛 Leite", isCheck: true },
@@ -14,9 +16,18 @@ const listShopping = [
 ]
 
 export const ShoppingList3 = () => {
-  const [list, setList] = useState(listShopping)
+  const [list, setList] = useState([])
   const [newItemLabel, setNewItemLabel] = useState("")
   const blockAddMore = newItemLabel === ""
+  const { pathname } = useLocation()
+  const path = pathname.split("/")[2]
+
+  useEffect(() => {
+    setList([])
+    setTimeout(() => {
+      setList(listShopping(path))
+    }, [3000])
+  }, [path])
 
   function addToList(e) {
     if (blockAddMore) {
@@ -40,6 +51,7 @@ export const ShoppingList3 = () => {
 
   return (
     <>
+      <Title>{decodeURI(path)}</Title>
       <NewItemInput>
         <ItemInput
           placeholder="Insira um Item..."
@@ -56,10 +68,16 @@ export const ShoppingList3 = () => {
           <AddIcon />
         </ListButton>
       </NewItemInput>
+      {JSON.stringify(list) === "[]" && <Loading />}
       <SortableList list={list} setList={setList} />
     </>
   )
 }
+
+const Title = styled.h2`
+  margin: 0;
+  margin-top: 0.3em;
+`
 
 const AddIcon = styled(BiAddToQueue)`
   width: 3em;

@@ -25,6 +25,7 @@ const ContainerLimiteMenu = styled.div`
 
 const ContainerHeader = styled.header`
   background-color: var(--bg-menu-color);
+  font-family: var(--li-font-family);
   position: sticky;
 
   display: flex;

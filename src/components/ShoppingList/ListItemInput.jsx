@@ -12,5 +12,5 @@ export const ItemInput = styled.input`
 
   width: 100%;
 
-  margin-top: 0.4em;
+  margin-top: 0.2em;
 `
