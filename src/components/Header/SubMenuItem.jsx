@@ -4,9 +4,9 @@ import { styled } from "styled-components"
 export const SubMenuItem = ({ isSelected, children }) => {
   return (
     <Item
-      layout
+      layout="position"
       animate={{
-        color: isSelected ? "var(--color-orange)" : "var(--menu-color)",
+        color: isSelected ? "var(--menu-color-active)" : "var(--menu-color)",
         backgroundColor: isSelected ? "#fff" : "#0000",
       }}
     >

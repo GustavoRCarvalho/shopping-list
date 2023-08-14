@@ -2,6 +2,7 @@ body {
   --bg-color-default: #242424;
   --bg-menu-color: #ff7f55;
   --menu-color: #f1f1f1;
+  --menu-color-active: #181818;
   --color-blue: #0b73f4;
   --color-orange: #ff7f55;
   --li-font-family: "Solitreo", cursive;

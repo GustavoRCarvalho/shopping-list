@@ -6,9 +6,11 @@ export const SubMenu = ({ isActive, children }) => {
     <SubMenuContainer
       layout
       animate={{
-        height: isActive ? "50vh" : "0",
         marginTop: isActive ? "0.5em" : "0",
+        height: isActive ? "auto" : "0",
       }}
+      transition={{ duration: 0.2 }}
+      $isActive={isActive}
     >
       {children}
     </SubMenuContainer>
@@ -20,5 +22,6 @@ const SubMenuContainer = styled(motion.ul)`
 
   padding: 0;
   margin: 0;
+  max-height: 50vh;
   overflow: auto;
 `

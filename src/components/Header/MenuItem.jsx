@@ -7,7 +7,7 @@ export const MenuItem = ({ onClick = () => {}, isSelected, children }) => {
       onClick={onClick}
       layout
       animate={{
-        color: isSelected ? "var(--color-orange)" : "var(--menu-color)",
+        color: isSelected ? "var(--menu-color-active)" : "var(--menu-color)",
         backgroundColor: isSelected ? "#fff" : "#0000",
       }}
     >

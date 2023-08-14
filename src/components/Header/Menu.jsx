@@ -24,12 +24,42 @@ export const Menu = () => {
         >
           <AiOutlineUnorderedList className="iconMenu" />
         </MenuItem>
-        <NoStyleLinkRouter to={`/user`}>
-          <MenuItem isSelected={path === "user"}>
-            <AiOutlineUser className="iconMenu" />
-          </MenuItem>
-        </NoStyleLinkRouter>
+        <MenuItem
+          onClick={() => {
+            subMenu === "user" ? setSubMenu("") : setSubMenu("user")
+          }}
+          isSelected={subMenu === "user"}
+        >
+          <AiOutlineUser className="iconMenu" />
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            subMenu === "user" ? setSubMenu("") : setSubMenu("user")
+          }}
+          isSelected={subMenu === "user"}
+        >
+          <AiOutlineUser className="iconMenu" />
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            subMenu === "user" ? setSubMenu("") : setSubMenu("user")
+          }}
+          isSelected={subMenu === "user"}
+        >
+          <AiOutlineUser className="iconMenu" />
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            subMenu === "user" ? setSubMenu("") : setSubMenu("user")
+          }}
+          isSelected={subMenu === "user"}
+        >
+          <AiOutlineUser className="iconMenu" />
+        </MenuItem>
       </MenuList>
+      <SubMenu isActive={subMenu === "user"} role="list">
+        USER
+      </SubMenu>
       <SubMenu isActive={subMenu === "listas"} role="list">
         <NoStyleLinkRouter to={`/lista`}>
           <SubMenuItem isSelected={path === "lista"}>LISTA</SubMenuItem>
