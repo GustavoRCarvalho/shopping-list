@@ -17,7 +17,7 @@ const arrayLists = [
 export const Menu = () => {
   const [subMenu, setSubMenu] = useState("")
   const { pathname } = useLocation()
-  const path = pathname.split("/")[1]
+  const path = decodeURI(pathname.split("/")[2])
 
   return (
     <MenuContainer layout>

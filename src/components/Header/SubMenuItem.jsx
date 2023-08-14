@@ -1,13 +1,12 @@
 import { styled } from "styled-components"
 
 export const SubMenuItem = ({ isSelected, children }) => {
+  console.log(isSelected)
+
   return (
     <Item
-      layout="position"
-      animate={{
-        color: isSelected ? "var(--menu-color-active)" : "var(--menu-color)",
-        backgroundColor: isSelected ? "#fff" : "#0000",
-      }}
+      $color={isSelected ? "var(--menu-color-active)" : "var(--menu-color)"}
+      $backgroundColor={isSelected ? "#fff" : "#0000"}
     >
       <ItemSpan>{children}</ItemSpan>
     </Item>
@@ -24,7 +23,8 @@ const Item = styled.li`
   align-items: center;
   justify-content: center;
 
-  color: var(--menu-color);
+  color: ${(props) => props.$color};
+  background-color: ${(props) => props.$backgroundColor};
   padding: 0.2em;
   margin-bottom: 0.5em;
   border: 1px solid #fff;
