@@ -22,6 +22,24 @@ const SubMenuContainer = styled(motion.ul)`
 
   padding: 0;
   margin: 0;
-  max-height: 50vh;
+  max-height: 40vh;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #0000;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: white;
+    border: 4px solid var(--bg-menu-color);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: white;
+  }
 `

@@ -1,8 +1,6 @@
 import { styled } from "styled-components"
 
 export const SubMenuItem = ({ isSelected, children }) => {
-  console.log(isSelected)
-
   return (
     <Item
       $color={isSelected ? "var(--menu-color-active)" : "var(--menu-color)"}
