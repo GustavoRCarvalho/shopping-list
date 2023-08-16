@@ -8,14 +8,43 @@ import { SortableList } from "../ShoppingList/SortableList"
 import { useLocation } from "react-router-dom"
 import { Loading } from "../common/Loading"
 
-const listShopping = () => [
-  { id: 1, label: "🍞 Pão", isCheck: false },
-  { id: 2, label: "🧀 Queijo", isCheck: false },
-  { id: 3, label: "🥛 Leite", isCheck: true },
-  { id: 4, label: "🍾 Azeite", isCheck: false },
-]
+const listShopping = (path) => {
+  switch (path) {
+    case "Fast Food":
+      return [
+        { id: 1, label: "🍔 Hamburger", isCheck: false },
+        { id: 2, label: "🍟 Batata Frita", isCheck: false },
+        { id: 3, label: "🍕 Pizza", isCheck: true },
+        { id: 4, label: "🌭 Cachorro Quente", isCheck: false },
+        { id: 5, label: "🌮 Taco", isCheck: false },
+      ]
+    case "Fazer Bolo":
+      return [
+        { id: 1, label: "🥚 ovoso", isCheck: false },
+        { id: 2, label: "🥛 Leite", isCheck: false },
+        { id: 4, label: "🍚 Açucar", isCheck: false },
+        { id: 3, label: "🥣 Farrinha", isCheck: true },
+        { id: 5, label: "🍫 Chocolate em Pó", isCheck: false },
+      ]
+    case "Compras da Fruteira":
+      return [
+        { id: 1, label: "🍇 Uva", isCheck: false },
+        { id: 2, label: "🍓 Morango", isCheck: false },
+        { id: 4, label: "🥝 Kiwi", isCheck: false },
+        { id: 3, label: "🍎 Maça", isCheck: true },
+        { id: 5, label: "🍍 Abacaxi", isCheck: false },
+      ]
+    default:
+      return [
+        { id: 1, label: "🍞 Pão", isCheck: false },
+        { id: 2, label: "🧀 Queijo", isCheck: false },
+        { id: 3, label: "🥛 Leite", isCheck: true },
+        { id: 4, label: "🍾 Azeite", isCheck: false },
+      ]
+  }
+}
 
-export const ShoppingList3 = () => {
+export const ShoppingList = () => {
   const [list, setList] = useState([])
   const [newItemLabel, setNewItemLabel] = useState("")
   const blockAddMore = newItemLabel === ""
@@ -25,7 +54,7 @@ export const ShoppingList3 = () => {
   useEffect(() => {
     setList([])
     setTimeout(() => {
-      setList(listShopping(path))
+      setList(listShopping(decodeURI(path)))
     }, [3000])
   }, [path])
 

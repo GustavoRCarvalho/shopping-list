@@ -10,7 +10,11 @@ import { NoStyleLinkRouter } from "../common/NoStyleLinkRouter"
 import { SubMenuItem } from "./SubMenuItem"
 
 const staticData = {
-  myLists: [{ title: "lista 1" }, { title: "lista 2" }, { title: "lista 3" }],
+  myLists: [
+    { title: "Fast Food" },
+    { title: "Fazer Bolo" },
+    { title: "Compras da Fruteira" },
+  ],
   sharedLists: [
     { title: "lista 4" },
     { title: "lista 5" },
