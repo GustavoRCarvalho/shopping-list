@@ -20,7 +20,6 @@ const MainContainer = styled.main`
   font-family: var(--li-font-family);
   max-width: 1280px;
   width: 95vw;
-  min-height: 100vh;
 
   @media screen and (max-width: 768px) {
     width: 100%;

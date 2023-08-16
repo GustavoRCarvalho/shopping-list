@@ -33,7 +33,7 @@ const ContainerHeader = styled.header`
   align-items: center;
 
   width: 100%;
-  bottom: 0;
+  top: 100%;
 
   border-top-right-radius: 0.5em;
   border-top-left-radius: 0.5em;
