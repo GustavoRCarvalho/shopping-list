@@ -1,5 +1,8 @@
 # Shopping List - Estudos de Listas Compartilhadas Com Uso de Socket
 
+Acesse: [Shopping List](https://shopping-list.gustavocarvalho.dev.br/)
+Este site está hospedado na plataforma Amazon Amplify.
+
 O Shopping List é um projeto de listagem de compras que oferece uma maneira simples e eficaz de criar, gerenciar e compartilhar listas de compras personalizadas. Com a combinação das mais modernas tecnologias, incluindo React, Vite, React Router, Styled Components, React Icons, Framer Motion e DnD Kit o Shopping List proporciona uma experiência de usuário fluida e agradável para planejar suas compras de forma organizada.
 
 ## Tecnologias Utilizadas
